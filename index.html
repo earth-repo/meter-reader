@@ -392,8 +392,9 @@
 
       const parsed = JSON.parse(jsonMatch[0]);
 
-      outNo.textContent  = parsed.meter_no      ?? '—';
-      outVal.textContent = parsed.meter_reading  ?? '—';
+      outNo.textContent  = parsed.meter_no ?? '—';
+      const raw = parsed.meter_reading;
+      outVal.textContent = raw != null ? String(Math.floor(parseFloat(raw))) : '—';
 
       resultBox.style.display = 'block';
     } catch (e) {
